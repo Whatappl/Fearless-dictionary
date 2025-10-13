@@ -1,35 +1,38 @@
 const express = require('express');
-const fs = require('fs');
 const cors = require('cors');
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
-
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname)); // serve static files like index.html
 
 // Load dictionary
 let dictionary = {};
-fs.readFile('dictionary.json', 'utf8', (err, data) => {
-  if (err) console.error('Error reading dictionary.json:', err);
-  else {
+try {
+    const data = fs.readFileSync('dictionary.json', 'utf-8');
     dictionary = JSON.parse(data);
     console.log('Dictionary loaded successfully!');
-  }
-});
+} catch (err) {
+    console.error('Error reading dictionary.json:', err);
+}
 
-// Serve index.html at root
+// Route for homepage
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html')); // send your HTML
 });
 
-// API to search words
+// Route to search words
 app.get('/search', (req, res) => {
-  const word = req.query.word?.toLowerCase();
-  const definition = dictionary[word];
-  res.json({ definition: definition ? definition : "Word not found!" });
+    const word = req.query.word;
+    if (dictionary[word]) {
+        res.json({ word, definition: dictionary[word] });
+    } else {
+        res.json({ word, definition: 'Not found in dictionary' });
+    }
 });
 
-// Start server
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+app.listen(3000, () => {
+    console.log('Server is running at http://localhost:3000');
+});
