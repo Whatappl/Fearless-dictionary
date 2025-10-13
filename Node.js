@@ -1,5 +1,0 @@
-{
-  "word1": "definition1",
-  "word2": "definition2",
-  ...
-}
