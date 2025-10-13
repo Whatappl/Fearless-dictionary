@@ -19,16 +19,17 @@ fs.readFile('dictionary.json', 'utf8', (err, data) => {
   }
 });
 
-// Serve HTML
+// Serve index.html at root
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Search API
+// API to search words
 app.get('/search', (req, res) => {
   const word = req.query.word?.toLowerCase();
   const definition = dictionary[word];
   res.json({ definition: definition ? definition : "Word not found!" });
 });
 
+// Start server
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
