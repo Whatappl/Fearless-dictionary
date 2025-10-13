@@ -9,6 +9,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
+// Load dictionary
 let dictionary = {};
 fs.readFile('dictionary.json', 'utf8', (err, data) => {
   if (err) console.error('Error reading dictionary.json:', err);
@@ -18,7 +19,7 @@ fs.readFile('dictionary.json', 'utf8', (err, data) => {
   }
 });
 
-// Serve your HTML
+// Serve HTML
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
