@@ -1,6 +1,17 @@
-{
-  "apple": "A round fruit with red, green, or yellow skin.",
-  "banana": "A long curved fruit with a yellow peel.",
-  "computer": "An electronic device for processing data.",
-  "fearless": "Brave and not afraid; bold in action."
+const fs = require('fs');
+
+let dictionary = {};
+
+// Generate 5000 sample words
+for (let i = 1; i <= 5000; i++) {
+  dictionary[`word${i}`] = `Definition of word${i}.`;
 }
+
+// Add a few real words too
+dictionary["apple"] = "A round fruit with red, green, or yellow skin.";
+dictionary["banana"] = "A long curved fruit with a yellow peel.";
+dictionary["computer"] = "An electronic device for processing data.";
+dictionary["fearless"] = "Brave and not afraid; bold in action.";
+
+fs.writeFileSync('dictionary.json', JSON.stringify(dictionary, null, 2));
+console.log('5000-word dictionary.json generated successfully!');
