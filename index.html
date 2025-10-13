@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Node.js Dictionary</title>
+<style>
+  body { font-family: Arial; text-align: center; padding: 50px; background-color: #f0f0f0; }
+  input { padding: 10px; width: 300px; }
+  button { padding: 10px 15px; }
+  p { font-size: 18px; color: #333; }
+</style>
+</head>
+<body>
+  <h1>Node.js Dictionary</h1>
+  <input id="wordInput" placeholder="Type a word...">
+  <button onclick="searchWord()">Search</button>
+  <p id="definition"></p>
+
+  <script>
+    async function searchWord() {
+      const word = document.getElementById("wordInput").value;
+      if (!word) {
+        document.getElementById("definition").innerText = "Please type a word!";
+        return;
+      }
+      const response = await fetch(`http://localhost:3000/search?word=${word}`);
+      const data = await response.json();
+      document.getElementById("definition").innerText = data.definition;
+    }
+
+    // Optional: Press Enter to search
+    document.getElementById("wordInput").addEventListener("keypress", function(e){
+      if(e.key === "Enter") searchWord();
+    });
+  </script>
+</body>
+</html>
