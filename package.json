@@ -1,15 +1,13 @@
-‎{
-‎  "name": "node-dictionary",
-‎  "version": "1.0.0",
-‎  "description": "A Node.js online dictionary with 5000+ words",
-‎  "main": "server.js",
-‎  "scripts": {
-‎    "start": "node server.js"
-‎  },
-‎  "author": "Your Name",
-‎  "license": "MIT",
-‎  "dependencies": {
-‎    "express": "^4.18.2"
-‎  }
-‎}
-‎
+{
+  "name": "fearless-dictionary",
+  "version": "1.0.0",
+  "description": "A simple online dictionary",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["dictionary", "nodejs", "express"],
+  "author": "Fearless",
+  "license": "ISC",
+  "dependencies": {}
+}
