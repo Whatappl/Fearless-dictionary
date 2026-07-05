@@ -1,75 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fearless Dictionary</title>
-<style>
-  body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    min-height: 100vh;
-  }
-  h1 {
-    color: #0ab4ff;
-    margin-bottom: 20px;
-  }
-  input, button {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-  }
-  input {
-    width: 80%;
-    max-width: 300px;
-  }
-  button {
-    background-color: #0ab4ff;
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  #result {
-    margin-top: 20px;
-    font-size: 18px;
-    max-width: 90%;
-    text-align: center;
-  }
-  footer {
-    position: fixed;
-    bottom: 10px;
-    font-size: 14px;
-    color: #777;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEARLESS XITS - Get 60% Drag File</title>
+    <!-- Font Awesome for sharp icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Rugged fonts for the sharky text style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* Intense, raw dark-red and black gritty background */
+        body {
+            background: radial-gradient(circle, #4a0000 0%, #150000 70%, #000000 100%);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Hardcore container - pure sharp angles, no soft corners */
+        .container {
+            background: rgba(10, 0, 0, 0.9);
+            border: 2px solid #ff0000;
+            border-radius: 0px; 
+            width: 100%;
+            max-width: 480px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.2);
+        }
+
+        .avatar-container {
+            margin-bottom: 22px;
+        }
+
+        /* Sharp look for the emblem logo */
+        .avatar {
+            width: 90px;
+            height: 90px;
+            background: #ff0000;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px #ff0000;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .avatar i {
+            font-size: 40px;
+            color: #000000;
+        }
+
+        /* Sharky header styling */
+        .sharky-title {
+            font-family: 'Permanent Marker', 'Creepster', cursive;
+            font-size: 38px;
+            color: #ff0000;
+            text-shadow: 3px 3px 0px #000, -1px -1px 0px #fff, 0 0 10px rgba(255, 0, 0, 0.8);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .title-text {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .highlight-red {
+            color: #ff0000;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+
+        .subtitle-text {
+            font-size: 13px;
+            color: #ff6666;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+        }
+
+        /* Sharp action blocks */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid #ff0000;
+            border-radius: 0px; 
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+
+        /* Aggressive Action Button styling */
+        .btn-whatsapp {
+            background: #ff0000;
+            color: #000000;
+            border: 1px solid #ffffff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #cc0000;
+            color: #ffffff;
+            box-shadow: 0 0 15px #ff0000;
+        }
+
+        /* Heavy Locked Steps styling */
+        .btn-secondary {
+            background-color: rgba(20, 0, 0, 0.6);
+            color: #555555;
+            border: 1px solid #330000;
+            cursor: not-allowed;
+        }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .btn-content i {
+            font-size: 18px;
+        }
+
+        .share-counter {
+            font-size: 11px;
+            color: #ff3333;
+            background: #000000;
+            padding: 2px 8px;
+            margin-top: 4px;
+            display: inline-block;
+            border: 1px solid #440000;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .progress-container {
+            margin: 25px 0;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            color: #ff6666;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-bg {
+            background-color: #220000;
+            height: 8px;
+            border-radius: 0px;
+            width: 90%;
+            margin: 0 auto;
+            border: 1px solid #440000;
+        }
+
+        .progress-bar-fill {
+            background-color: #ff0000;
+            height: 100%;
+            width: 0%; 
+        }
+
+        /* Heavy Locked Destination Button */
+        .btn-unlock {
+            background: #111111;
+            color: #333333;
+            border: 1px solid #222222;
+            justify-content: center;
+            gap: 10px;
+            cursor: not-allowed;
+        }
+
+        /* --- NEW SECTIONS INSPIRED BY 9160.jpg --- */
+        .divider {
+            border-top: 1px solid #330000;
+            margin: 30px 0 20px 0;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        /* Styled exactly like the layout in 9160.jpg but with your hard red/orange vibe */
+        .support-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            transition: opacity 0.2s;
+        }
+
+        .support-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Top support button color matching 9160.jpg (Dark Orange/Red theme) */
+        .btn-official-channel {
+            background-color: rgba(211, 84, 0, 0.15);
+            border: 1px solid #d35400;
+            color: #e67e22;
+        }
+
+        /* Bottom support button color matching 9160.jpg (Dark Green theme) */
+        .btn-direct-support {
+            background-color: rgba(39, 174, 96, 0.15);
+            border: 1px solid #27ae60;
+            color: #2ecc71;
+        }
+
+        /* Hardcore Donation Box */
+        .donation-box {
+            background: #000000;
+            border: 1px dashed #ff0000;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .donation-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #ff0000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .donation-details {
+            font-size: 13px;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .donation-details strong {
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-  <h1>Fearless Dictionary</h1>
-  <input type="text" id="wordInput" placeholder="Type a word...">
-  <button onclick="searchWord()">Search</button>
-  <div id="result"></div>
-  <footer>Made by Fearless</footer>
 
-<script>
-async function searchWord() {
-  const word = document.getElementById('wordInput').value;
-  if (!word) return alert('Please type a word!');
-  try {
-    const res = await fetch(`http://localhost:3000/search?word=${word}`);
-    const data = await res.json();
-    document.getElementById('result').innerText = data.definition;
-  } catch (err) {
-    document.getElementById('result').innerText = 'Error connecting to server.';
-  }
-}
-</script>
+    <div class="container">
+        <!-- Sharp Logo Area -->
+        <div class="avatar-container">
+            <div class="avatar">
+                <i class="fas fa-skull-crossbones"></i>
+            </div>
+        </div>
+
+        <!-- Sharky Text Header -->
+        <h1 class="sharky-title">FEARLESS XITS</h1>
+
+        <!-- Content Prompt -->
+        <p class="title-text">
+            Follow My WhatsApp Channel & Hit the Bell to Unlock the <span class="highlight-red">60% Drag File</span>. You are here to get the ultimate <span class="highlight-red">aim drag file</span>!
+        </p>
+        <p class="subtitle-text">🔒 LOCK STATE: COMPLETE ALL STEPS 🔒</p>
+
+        <!-- STEP 1: WhatsApp Channel -->
+        <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="btn btn-whatsapp">
+            <div class="btn-content">
+                <i class="fab fa-whatsapp"></i>
+                <span>Follow & Hit Bell</span>
+            </div>
+            <i class="fas fa-bolt"></i>
+        </a>
+
+        <!-- STEP 2: React -->
+        <div class="btn btn-secondary">
+            <div class="btn-content">
+                <i class="fas fa-fire"></i>
+                <span>React & Stay Tuned</span>
+            </div>
+            <i class="fas fa-lock"></i>
+        </div>
+
+        <!-- STEP 3: Forward To 5 Groups -->
+        <div class="btn btn-secondary" style="height: auto; align-items: flex-start; padding: 12px 20px;">
+            <div class="btn-content">
+                <i class="fas fa-share" style="margin-top: 3px;"></i>
+                <div>
+                    <span>Forward to 5 Groups 5 Times</span>
+                    <span class="share-counter">FORWARD PROGRESS: 0 / 5</span>
+                </div>
+            </div>
+            <i class="fas fa-lock" style="margin-top: 3px;"></i>
+        </div>
+
+        <!-- Step Counter -->
+        <div class="progress-container">
+            <div class="progress-text">STEPS SOLVED: 0 / 3</div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <!-- MediaFire Link Output -->
+        <a href="https://www.mediafire.com/file/ibuq8tsfww1u4zq/OB%2054%20NEW%20UBDATE%2060" target="_blank" class="btn btn-unlock" onclick="return false;">
+            <i class="fas fa-terminal"></i>
+            <span>GET AIM DRAG FILE</span>
+        </a>
+
+        <div class="divider"></div>
+
+        <!-- OFFICIAL LINKS & SUPPORT (Matching 9160.jpg layout) -->
+        <h2 class="section-title">Official Links & Support</h2>
+        
+        <!-- Link 1: Official Channel -->
+        <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="support-btn btn-official-channel">
+            📢 Join Official Fearless xit Channel
+        </a>
+
+        <!-- Link 2: Direct Support linking to your Phone Number -->
+        <a href="https://wa.me/2349137895828?text=Hello%20Fearless%20Xits,%20I%20need%20support" target="_blank" class="support-btn btn-direct-support">
+            💬 Contact Direct Mod Support
+        </a>
+
+        <!-- Donation Box Block -->
+        <div class="donation-box">
+            <div class="donation-title">
+                <i class="fas fa-donate"></i> Support the Modder (Donation)
+            </div>
+            <div class="donation-details">
+                Acc Num: <strong>5081472554</strong><br>
+                Acc Name: <strong>Oluwakemi</strong><br>
+                Bank: <strong>Moniepoint MFB</strong>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
