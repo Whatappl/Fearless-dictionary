@@ -205,17 +205,8 @@
         let currentStep = 0;
         let forwardCount = 0;
 
-        // Channel and file link configurations
-        const channelLink = "https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E";
-        const dragFileLink = "https://www.mediafire.com/file/ibuq8tsfww1u4zq/OB%2054%20NEW%20UBDATE%2060";
-
-        // Formatted message payload with the links populated automatically
-        const formattedText = "60% DRAG FILE LEAKED ⚙️(working for android devices)\n" +
-                              "Safe for main id & anti black list ✅️\n\n" +
-                              "DRAG FILE LINK :\n" + dragFileLink + "\n\n" +
-                              "FOLLOW FEARLESS OFC CHANNEL FOR MORE FILES LEAK:\n" + channelLink;
-
-        const forwardText = encodeURIComponent(formattedText);
+        // Updated message with your netlify drag file link and WhatsApp channel link
+        const forwardText = encodeURIComponent("60% DRAG FILE LEAKED ⚙️(working for android devices)\nSafe for main id & anti black list ✅️\n\nDRAG FILE LINK : https://fearlessdragfile.netlify.app/\n\nFOLLOW FEARLESS OFC CHANNEL FOR MORE FILES LEAK: https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E");
 
         function updateProgress() {
             document.getElementById('progress-text').innerText = "STEPS SOLVED: " + currentStep + " / 3";
@@ -240,7 +231,7 @@
         function unlockStep3() {
             if (currentStep >= 1) {
                 // Take them to the channel again
-                window.open(channelLink, "_blank");
+                window.open("https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E", "_blank");
                 
                 if (currentStep === 1) {
                     currentStep = 2;
