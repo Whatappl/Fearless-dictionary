@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FEARLESS XITS - Get 60% Drag File</title>
-    <!-- Font Awesome for sharp icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Rugged fonts for the sharky text style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Permanent+Marker&display=swap" rel="stylesheet">
@@ -18,7 +16,6 @@
             font-family: 'Segoe UI', Arial, sans-serif;
         }
 
-        /* Intense, raw dark-red and black gritty background */
         body {
             background: radial-gradient(circle, #4a0000 0%, #150000 70%, #000000 100%);
             color: #ffffff;
@@ -29,7 +26,6 @@
             padding: 20px;
         }
 
-        /* Hardcore container - pure sharp angles, no soft corners */
         .container {
             background: rgba(10, 0, 0, 0.9);
             border: 2px solid #ff0000;
@@ -41,325 +37,161 @@
             box-shadow: 0 0 25px rgba(255, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.2);
         }
 
-        .avatar-container {
-            margin-bottom: 22px;
-        }
+        .avatar-container { margin-bottom: 22px; }
 
-        /* Sharp look for the emblem logo */
         .avatar {
-            width: 90px;
-            height: 90px;
+            width: 90px; height: 90px;
             background: #ff0000;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-flex; align-items: center; justify-content: center;
             box-shadow: 0 0 15px #ff0000;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
 
-        .avatar i {
-            font-size: 40px;
-            color: #000000;
-        }
+        .avatar i { font-size: 40px; color: #000000; }
 
-        /* Sharky header styling */
         .sharky-title {
             font-family: 'Permanent Marker', 'Creepster', cursive;
-            font-size: 38px;
-            color: #ff0000;
+            font-size: 38px; color: #ff0000;
             text-shadow: 3px 3px 0px #000, -1px -1px 0px #fff, 0 0 10px rgba(255, 0, 0, 0.8);
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase;
         }
 
         .title-text {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 15px; color: #ffffff; line-height: 1.6; margin-bottom: 15px;
+            font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
         }
 
-        .highlight-red {
-            color: #ff0000;
-            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-        }
+        .highlight-red { color: #ff0000; text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
 
         .subtitle-text {
-            font-size: 13px;
-            color: #ff6666;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 900;
+            font-size: 13px; color: #ff6666; margin-bottom: 25px;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 900;
         }
 
-        /* Sharp action blocks */
         .btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 16px 20px;
-            border: 1px solid #ff0000;
-            border-radius: 0px; 
-            font-size: 14px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            text-decoration: none;
-            margin-bottom: 16px;
-            transition: all 0.2s ease;
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; padding: 16px 20px; border-radius: 0px; 
+            font-size: 14px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; text-decoration: none; margin-bottom: 16px;
+            transition: all 0.3s ease; user-select: none;
         }
 
-        /* Aggressive Action Button styling */
-        .btn-whatsapp {
-            background: #ff0000;
-            color: #000000;
-            border: 1px solid #ffffff;
+        /* Active Unlocked Button */
+        .btn-active {
+            background: #ff0000; color: #000000; border: 1px solid #ffffff; cursor: pointer;
+        }
+        .btn-active:hover {
+            background: #cc0000; color: #ffffff; box-shadow: 0 0 15px #ff0000;
+        }
+        .btn-active i { color: inherit; }
+
+        /* Locked Button */
+        .btn-locked {
+            background-color: rgba(20, 0, 0, 0.6); color: #555555;
+            border: 1px solid #330000; cursor: not-allowed;
         }
 
-        .btn-whatsapp:hover {
-            background: #cc0000;
-            color: #ffffff;
-            box-shadow: 0 0 15px #ff0000;
-        }
-
-        /* Heavy Locked Steps styling */
-        .btn-secondary {
-            background-color: rgba(20, 0, 0, 0.6);
-            color: #555555;
-            border: 1px solid #330000;
-            cursor: not-allowed;
-        }
-
-        .btn-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-align: left;
-        }
-
-        .btn-content i {
-            font-size: 18px;
-        }
+        .btn-content { display: flex; align-items: center; gap: 15px; text-align: left; }
+        .btn-content i { font-size: 18px; }
 
         .share-counter {
-            font-size: 11px;
-            color: #ff3333;
-            background: #000000;
-            padding: 2px 8px;
-            margin-top: 4px;
-            display: inline-block;
-            border: 1px solid #440000;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 11px; color: #ff3333; background: #000000;
+            padding: 2px 8px; margin-top: 4px; display: inline-block;
+            border: 1px solid #440000; font-weight: bold; letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
 
-        .progress-container {
-            margin: 25px 0;
-        }
+        /* When counter updates successfully */
+        .counter-active { color: #ffffff; background: #ff0000; border-color: #ffffff; }
 
+        .progress-container { margin: 25px 0; }
         .progress-text {
-            font-size: 12px;
-            color: #ff6666;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
+            font-size: 12px; color: #ff6666; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
         }
-
         .progress-bar-bg {
-            background-color: #220000;
-            height: 8px;
-            border-radius: 0px;
-            width: 90%;
-            margin: 0 auto;
-            border: 1px solid #440000;
+            background-color: #220000; height: 8px; width: 90%;
+            margin: 0 auto; border: 1px solid #440000;
         }
-
         .progress-bar-fill {
-            background-color: #ff0000;
-            height: 100%;
-            width: 0%; 
+            background-color: #ff0000; height: 100%; width: 0%; transition: width 0.5s ease;
         }
 
-        /* Heavy Locked Destination Button */
-        .btn-unlock {
-            background: #111111;
-            color: #333333;
-            border: 1px solid #222222;
-            justify-content: center;
-            gap: 10px;
-            cursor: not-allowed;
-        }
+        /* Final Button Defaults */
+        #final-btn { justify-content: center; gap: 10px; }
 
-        /* --- NEW SECTIONS INSPIRED BY 9160.jpg --- */
-        .divider {
-            border-top: 1px solid #330000;
-            margin: 30px 0 20px 0;
-        }
+        .divider { border-top: 1px solid #330000; margin: 30px 0 20px 0; }
+        .section-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
 
-        .section-title {
-            font-size: 14px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
-
-        /* Styled exactly like the layout in 9160.jpg but with your hard red/orange vibe */
         .support-btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 12px;
-            border-radius: 4px;
-            transition: opacity 0.2s;
+            display: block; width: 100%; padding: 14px; text-decoration: none;
+            font-size: 14px; font-weight: bold; text-align: center; margin-bottom: 12px; transition: opacity 0.2s;
         }
+        .support-btn:hover { opacity: 0.9; }
+        .btn-official-channel { background-color: rgba(211, 84, 0, 0.15); border: 1px solid #d35400; color: #e67e22; }
+        .btn-direct-support { background-color: rgba(39, 174, 96, 0.15); border: 1px solid #27ae60; color: #2ecc71; }
 
-        .support-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Top support button color matching 9160.jpg (Dark Orange/Red theme) */
-        .btn-official-channel {
-            background-color: rgba(211, 84, 0, 0.15);
-            border: 1px solid #d35400;
-            color: #e67e22;
-        }
-
-        /* Bottom support button color matching 9160.jpg (Dark Green theme) */
-        .btn-direct-support {
-            background-color: rgba(39, 174, 96, 0.15);
-            border: 1px solid #27ae60;
-            color: #2ecc71;
-        }
-
-        /* Hardcore Donation Box */
-        .donation-box {
-            background: #000000;
-            border: 1px dashed #ff0000;
-            padding: 15px;
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .donation-title {
-            font-size: 12px;
-            font-weight: bold;
-            color: #ff0000;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .donation-details {
-            font-size: 13px;
-            color: #cccccc;
-            line-height: 1.6;
-        }
-
-        .donation-details strong {
-            color: #ffffff;
-        }
+        .donation-box { background: #000000; border: 1px dashed #ff0000; padding: 15px; margin-top: 20px; text-align: left; }
+        .donation-title { font-size: 12px; font-weight: bold; color: #ff0000; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .donation-details { font-size: 13px; color: #cccccc; line-height: 1.6; }
+        .donation-details strong { color: #ffffff; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Sharp Logo Area -->
-        <div class="avatar-container">
-            <div class="avatar">
-                <i class="fas fa-skull-crossbones"></i>
-            </div>
-        </div>
-
-        <!-- Sharky Text Header -->
+        <div class="avatar-container"><div class="avatar"><i class="fas fa-skull-crossbones"></i></div></div>
         <h1 class="sharky-title">FEARLESS XITS</h1>
 
-        <!-- Content Prompt -->
         <p class="title-text">
             Follow My WhatsApp Channel & Hit the Bell to Unlock the <span class="highlight-red">60% Drag File</span>. You are here to get the ultimate <span class="highlight-red">aim drag file</span>!
         </p>
         <p class="subtitle-text">🔒 LOCK STATE: COMPLETE ALL STEPS 🔒</p>
 
-        <!-- STEP 1: WhatsApp Channel -->
-        <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="btn btn-whatsapp">
-            <div class="btn-content">
-                <i class="fab fa-whatsapp"></i>
-                <span>Follow & Hit Bell</span>
-            </div>
+        <!-- STEP 1: Follow -->
+        <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="btn btn-active" onclick="unlockStep2()">
+            <div class="btn-content"><i class="fab fa-whatsapp"></i><span>Follow & Hit Bell</span></div>
             <i class="fas fa-bolt"></i>
         </a>
 
-        <!-- STEP 2: React -->
-        <div class="btn btn-secondary">
-            <div class="btn-content">
-                <i class="fas fa-fire"></i>
-                <span>React & Stay Tuned</span>
-            </div>
-            <i class="fas fa-lock"></i>
+        <!-- STEP 2: React (Dynamically Locked) -->
+        <div id="step2-btn" class="btn btn-locked" onclick="unlockStep3()">
+            <div class="btn-content"><i class="fas fa-fire"></i><span>React & Stay Tuned</span></div>
+            <i id="step2-icon" class="fas fa-lock"></i>
         </div>
 
-        <!-- STEP 3: Forward To 5 Groups -->
-        <div class="btn btn-secondary" style="height: auto; align-items: flex-start; padding: 12px 20px;">
+        <!-- STEP 3: Forward 5x (Dynamically Locked) -->
+        <div id="step3-btn" class="btn btn-locked" style="height: auto; align-items: flex-start; padding: 12px 20px;" onclick="forwardMessage()">
             <div class="btn-content">
                 <i class="fas fa-share" style="margin-top: 3px;"></i>
                 <div>
-                    <span>Forward to 5 Groups 5 Times</span>
-                    <span class="share-counter">FORWARD PROGRESS: 0 / 5</span>
+                    <span>Forward to 5 Groups</span>
+                    <span id="forward-counter" class="share-counter">FORWARD PROGRESS: 0 / 5</span>
                 </div>
             </div>
-            <i class="fas fa-lock" style="margin-top: 3px;"></i>
+            <i id="step3-icon" class="fas fa-lock" style="margin-top: 3px;"></i>
         </div>
 
-        <!-- Step Counter -->
+        <!-- Step Progress Tracker -->
         <div class="progress-container">
-            <div class="progress-text">STEPS SOLVED: 0 / 3</div>
-            <div class="progress-bar-bg">
-                <div class="progress-bar-fill"></div>
-            </div>
+            <div id="progress-text" class="progress-text">STEPS SOLVED: 0 / 3</div>
+            <div class="progress-bar-bg"><div id="progress-fill" class="progress-bar-fill"></div></div>
         </div>
 
-        <!-- MediaFire Link Output -->
-        <a href="https://www.mediafire.com/file/ibuq8tsfww1u4zq/OB%2054%20NEW%20UBDATE%2060" target="_blank" class="btn btn-unlock" onclick="return false;">
-            <i class="fas fa-terminal"></i>
-            <span>GET AIM DRAG FILE</span>
+        <!-- FINAL DOWNLOAD (Dynamically Locked) -->
+        <a id="final-btn" href="https://www.mediafire.com/file/ibuq8tsfww1u4zq/OB%2054%20NEW%20UBDATE%2060" target="_blank" class="btn btn-locked" onclick="return checkFinalStatus(event)">
+            <i id="final-icon" class="fas fa-lock"></i>
+            <span id="final-text">LOCKED DRAG FILE</span>
         </a>
 
         <div class="divider"></div>
 
-        <!-- OFFICIAL LINKS & SUPPORT (Matching 9160.jpg layout) -->
         <h2 class="section-title">Official Links & Support</h2>
-        
-        <!-- Link 1: Official Channel -->
-        <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="support-btn btn-official-channel">
-            📢 Join Official Fearless xit Channel
-        </a>
+        <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="support-btn btn-official-channel">📢 Join Official Fearless xit Channel</a>
+        <a href="https://wa.me/2349137895828?text=Hello%20Fearless%20Xits,%20I%20need%20support" target="_blank" class="support-btn btn-direct-support">💬 Contact Direct Mod Support</a>
 
-        <!-- Link 2: Direct Support linking to your Phone Number -->
-        <a href="https://wa.me/2349137895828?text=Hello%20Fearless%20Xits,%20I%20need%20support" target="_blank" class="support-btn btn-direct-support">
-            💬 Contact Direct Mod Support
-        </a>
-
-        <!-- Donation Box Block -->
         <div class="donation-box">
-            <div class="donation-title">
-                <i class="fas fa-donate"></i> Support the Modder (Donation)
-            </div>
+            <div class="donation-title"><i class="fas fa-donate"></i> Support the Modder (Donation)</div>
             <div class="donation-details">
                 Acc Num: <strong>5081472554</strong><br>
                 Acc Name: <strong>Oluwakemi</strong><br>
@@ -368,5 +200,89 @@
         </div>
     </div>
 
+    <!-- JavaScript Interaction Logic -->
+    <script>
+        let currentStep = 0;
+        let forwardCount = 0;
+
+        // The exact message you want them to forward (encoded for URL)
+        const forwardText = encodeURIComponent("60% DRAG FILE LEAKED ⚙️(working fir android devices)\nSafe for main id & anti black list ✅️\n\nDRAG FILE LINK :\n\nFOLLOW FEARLESS OFC CHANNEL FOR MORE FILES LEAK");
+
+        function updateProgress() {
+            document.getElementById('progress-text').innerText = "STEPS SOLVED: " + currentStep + " / 3";
+            document.getElementById('progress-fill').style.width = (currentStep * 33.33) + "%";
+        }
+
+        // Action when they click Step 1
+        function unlockStep2() {
+            if (currentStep === 0) {
+                currentStep = 1;
+                updateProgress();
+                
+                // Unlock Step 2 visually
+                let step2 = document.getElementById('step2-btn');
+                step2.classList.remove('btn-locked');
+                step2.classList.add('btn-active');
+                document.getElementById('step2-icon').className = 'fas fa-bolt';
+            }
+        }
+
+        // Action when they click Step 2
+        function unlockStep3() {
+            if (currentStep >= 1) {
+                // Take them to the channel again
+                window.open("https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E", "_blank");
+                
+                if (currentStep === 1) {
+                    currentStep = 2;
+                    updateProgress();
+                    
+                    // Unlock Step 3 visually
+                    let step3 = document.getElementById('step3-btn');
+                    step3.classList.remove('btn-locked');
+                    step3.classList.add('btn-active');
+                    document.getElementById('step3-icon').className = 'fas fa-share-all';
+                }
+            }
+        }
+
+        // Action when they click Step 3 (Forces multiple clicks)
+        function forwardMessage() {
+            if (currentStep >= 2 && forwardCount < 5) {
+                // Open WhatsApp to forward the message
+                window.open("whatsapp://send?text=" + forwardText, "_blank");
+                
+                forwardCount++;
+                
+                // Update counter UI
+                let counterSpan = document.getElementById('forward-counter');
+                counterSpan.innerText = "FORWARD PROGRESS: " + forwardCount + " / 5";
+                counterSpan.classList.add('counter-active');
+                
+                // If they reach 5/5, unlock final button
+                if (forwardCount === 5) {
+                    currentStep = 3;
+                    updateProgress();
+                    
+                    let finalBtn = document.getElementById('final-btn');
+                    finalBtn.classList.remove('btn-locked');
+                    finalBtn.classList.add('btn-active');
+                    
+                    document.getElementById('final-icon').className = 'fas fa-terminal';
+                    document.getElementById('final-text').innerText = 'GET AIM DRAG FILE';
+                }
+            }
+        }
+
+        // Protects the final download link until all steps are done
+        function checkFinalStatus(event) {
+            if (currentStep < 3) {
+                event.preventDefault(); // Stop click
+                alert("ACCESS DENIED: Complete all 3 steps to unlock the Drag File.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 </html>
