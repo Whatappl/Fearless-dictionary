@@ -24,20 +24,40 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Pop-in entry animation for containers */
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Pulse glow animation for active elements */
+        @keyframes redGlow {
+            0% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+        }
+
+        /* Shimmer effect for progress bar updates */
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
         }
 
         .container {
-            background: rgba(10, 0, 0, 0.9);
+            background: rgba(10, 0, 0, 0.95);
             border: 2px solid #ff0000;
-            border-radius: 0px; 
+            border-radius: 4px; 
             width: 100%;
             max-width: 480px;
             padding: 35px 25px;
             text-align: center;
             box-shadow: 0 0 25px rgba(255, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.2);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        /* Key Verification Screen Styles (Inspired by 8691.jpg) */
         .key-box-icon {
             width: 75px; height: 75px;
             background: #ff0000;
@@ -45,6 +65,7 @@
             display: inline-flex; align-items: center; justify-content: center;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
             margin-bottom: 20px;
+            animation: redGlow 3s infinite ease-in-out;
         }
         .key-box-icon i { font-size: 35px; color: #000000; transform: rotate(-45deg); }
         
@@ -58,18 +79,31 @@
             width: 100%; padding: 16px; background: rgba(30, 0, 0, 0.6);
             border: 1px solid #550000; color: #ffffff; font-size: 16px;
             text-align: center; font-weight: bold; letter-spacing: 2px;
-            margin-bottom: 16px; outline: none; transition: all 0.3s;
+            margin-bottom: 16px; outline: none; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 4px;
         }
-        .key-input:focus { border-color: #ff0000; box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+        .key-input:focus { 
+            border-color: #ff0000; 
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+            background: rgba(45, 0, 0, 0.8);
+        }
         .key-input:disabled { background: rgba(15, 0, 0, 0.4); color: #444; border-color: #220000; cursor: not-allowed; }
 
+        /* Shake animation for incorrect key entry */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+        .shake-target { animation: shake 0.4s ease-in-out; }
+
         .error-msg {
-            background: rgba(255, 0, 0, 0.1); border: 1px dashed #ff0000;
+            background: rgba(255, 0, 0, 0.15); border: 1px dashed #ff0000;
             color: #ff3333; padding: 12px; font-size: 13px; font-weight: bold;
             margin-top: 10px; display: none; text-transform: uppercase; letter-spacing: 0.5px;
+            animation: popIn 0.3s ease;
         }
 
-        /* Original Layout Elements */
         .avatar-container { margin-bottom: 22px; }
         .avatar {
             width: 90px; height: 90px;
@@ -95,17 +129,20 @@
         .highlight-red { color: #ff0000; text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
         .subtitle-text { font-size: 13px; color: #ff6666; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-weight: 900; }
 
+        /* Button base styling with Tap/Active state shrink mechanics */
         .btn {
             display: flex; align-items: center; justify-content: space-between;
-            width: 100%; padding: 16px 20px; border-radius: 0px; 
+            width: 100%; padding: 16px 20px; border-radius: 4px; 
             font-size: 14px; font-weight: 800; text-transform: uppercase;
             letter-spacing: 1px; text-decoration: none; margin-bottom: 16px;
-            transition: all 0.3s ease; user-select: none; border: none;
+            transition: transform 0.1s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            user-select: none; border: none;
         }
 
-        /* Active Unlocked Button */
+        /* Active Unlocked Button States & Micro-interactions */
         .btn-active { background: #ff0000; color: #000000; border: 1px solid #ffffff; cursor: pointer; }
-        .btn-active:hover { background: #cc0000; color: #ffffff; box-shadow: 0 0 15px #ff0000; }
+        .btn-active:hover { background: #cc0000; color: #ffffff; box-shadow: 0 0 15px #ff0000; transform: translateY(-2px); }
+        .btn-active:active { transform: scale(0.96) translateY(0); } /* Tap compression effect */
         .btn-active i { color: inherit; }
 
         /* Locked Button */
@@ -121,12 +158,18 @@
             transition: all 0.3s ease;
         }
 
-        .counter-active { color: #ffffff; background: #ff0000; border-color: #ffffff; }
+        .counter-active { color: #ffffff; background: #ff0000; border-color: #ffffff; animation: popIn 0.3s ease; }
 
         .progress-container { margin: 25px 0; }
         .progress-text { font-size: 12px; color: #ff6666; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .progress-bar-bg { background-color: #220000; height: 8px; width: 90%; margin: 0 auto; border: 1px solid #440000; }
-        .progress-bar-fill { background-color: #ff0000; height: 100%; width: 0%; transition: width 0.5s ease; }
+        .progress-bar-bg { background-color: #220000; height: 10px; width: 90%; margin: 0 auto; border: 1px solid #440000; border-radius: 5px; overflow: hidden; }
+        .progress-bar-fill { 
+            background: linear-gradient(90deg, #ff0000 0%, #aa0000 50%, #ff0000 100%); 
+            background-size: 200px 100%;
+            height: 100%; width: 0%; 
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: shimmer 2s linear infinite;
+        }
 
         #final-btn { justify-content: center; gap: 10px; }
         .divider { border-top: 1px solid #330000; margin: 30px 0 20px 0; }
@@ -134,9 +177,11 @@
 
         .support-btn {
             display: block; width: 100%; padding: 14px; text-decoration: none;
-            font-size: 14px; font-weight: bold; text-align: center; margin-bottom: 12px; transition: opacity 0.2s;
+            font-size: 14px; font-weight: bold; text-align: center; margin-bottom: 12px; 
+            transition: transform 0.1s ease, opacity 0.2s; border-radius: 4px;
         }
-        .support-btn:hover { opacity: 0.9; }
+        .support-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .support-btn:active { transform: scale(0.98); }
         .btn-official-channel { background-color: rgba(211, 84, 0, 0.15); border: 1px solid #d35400; color: #e67e22; }
         .btn-direct-support { background-color: rgba(39, 174, 96, 0.15); border: 1px solid #27ae60; color: #2ecc71; }
 
@@ -148,24 +193,23 @@
 </head>
 <body>
 
-    <!-- SCREEN 1: KEY ACCES SYSTEM GATE (Inspired by 8691.jpg) -->
+    <!-- SCREEN 1: KEY ACCESS GATE (Inspired by 8691.jpg Layout) -->
     <div class="container" id="key-gate-screen">
         <div class="key-box-icon"><i class="fas fa-key"></i></div>
         <h1 class="sharky-title">FEARLESS XITS</h1>
-        <p class="subtitle-text" style="margin-bottom: 15px;">DRAG FILE ACCESS GATEWAY</p>
+        <p class="subtitle-text" style="margin-bottom: 15px;">PROXY ACCESS GATEWAY</p>
         
         <p class="title-text" style="font-size: 13px; color: #bbb; margin-bottom: 20px;">
             You must follow the official channel to unlock and obtain the proxy access key.
         </p>
 
-        <!-- Pre-requisite step to activate the form fields -->
         <button class="btn btn-active" onclick="unlockKeyForm()" style="margin-bottom: 25px;">
             <div class="btn-content"><i class="fab fa-whatsapp"></i><span>1. Follow Channel First</span></div>
             <i class="fas fa-external-link-alt"></i>
         </button>
 
         <div class="input-label">Enter License Key</div>
-        <input type="text" id="license-key-field" class="key-input" placeholder="PASTE KEY HERE" disabled>
+        <input type="text" id="license-key-field" class="key-input" placeholder="PASTE KEY HERE" disabled autocomplete="off">
 
         <button id="activate-key-btn" class="btn btn-locked" onclick="verifyLicenseKey()">
             <div class="btn-content"><i class="fas fa-lock"></i><span>Activate Access</span></div>
@@ -174,7 +218,7 @@
         <div id="error-box" class="error-msg"><i class="fas fa-times-circle"></i> Invalid Access Key</div>
     </div>
 
-    <!-- SCREEN 2: MAIN DASHBOARD STEPS (Hidden initially) -->
+    <!-- SCREEN 2: MAIN DASHBOARD STEPS (Rendered post successful key verification) -->
     <div class="container" id="main-dashboard-screen" style="display: none;">
         <div class="avatar-container"><div class="avatar"><i class="fas fa-skull-crossbones"></i></div></div>
         <h1 class="sharky-title">FEARLESS XITS</h1>
@@ -190,7 +234,7 @@
             <i class="fas fa-bolt"></i>
         </a>
 
-        <!-- STEP 2: React (Updated link) -->
+        <!-- STEP 2: React -->
         <div id="step2-btn" class="btn btn-locked" onclick="unlockStep3()">
             <div class="btn-content"><i class="fas fa-fire"></i><span>React & Stay Tuned</span></div>
             <i id="step2-icon" class="fas fa-lock"></i>
@@ -244,11 +288,10 @@
 
         const forwardText = encodeURIComponent("60% DRAG FILE LEAKED ⚙️(working for android devices)\nSafe for main id & anti black list ✅️\n\nDRAG FILE LINK : https://fearlessdragfile.netlify.app/\n\nFOLLOW FEARLESS OFC CHANNEL FOR MORE FILES LEAK: https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E");
 
-        // Key System Logic
+        // Key Logic & UI Transitions
         function unlockKeyForm() {
             window.open("https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E", "_blank");
             
-            // Allow form usage after interacting
             channelFollowed = true;
             document.getElementById('license-key-field').disabled = false;
             
@@ -256,25 +299,44 @@
             actBtn.classList.remove('btn-locked');
             actBtn.classList.add('btn-active');
             actBtn.querySelector('i').className = 'fas fa-unlock-alt';
+            
+            // Pop focus effect onto the input field
+            setTimeout(() => {
+                document.getElementById('license-key-field').focus();
+            }, 300);
         }
 
         function verifyLicenseKey() {
             if (!channelFollowed) return;
             
-            const userKey = document.getElementById('license-key-field').value.trim();
+            const inputField = document.getElementById('license-key-field');
+            const userKey = inputField.value.trim();
             const errorBox = document.getElementById('error-box');
+            const screenBox = document.getElementById('key-gate-screen');
             
             if (userKey === "FEARLESS-5421") {
                 errorBox.style.display = "none";
-                // Transition screens
-                document.getElementById('key-gate-screen').style.display = "none";
-                document.getElementById('main-dashboard-screen').style.display = "block";
+                
+                // Pop out old screen before switching dashboards smoothly
+                screenBox.style.transform = "scale(0.9)";
+                screenBox.style.opacity = "0";
+                screenBox.style.transition = "all 0.2s ease";
+                
+                setTimeout(() => {
+                    screenBox.style.display = "none";
+                    const dash = document.getElementById('main-dashboard-screen');
+                    dash.style.display = "block";
+                }, 200);
             } else {
+                // Trigger shake error animation
                 errorBox.style.display = "block";
+                inputField.classList.remove('shake-target');
+                void inputField.offsetWidth; // Force hardware redraw reflow
+                inputField.classList.add('shake-target');
             }
         }
 
-        // Original Dashboard Progression Steps
+        // Main Progression Operations
         function updateProgress() {
             document.getElementById('progress-text').innerText = "STEPS SOLVED: " + currentStep + " / 3";
             document.getElementById('progress-fill').style.width = (currentStep * 33.33) + "%";
@@ -294,7 +356,6 @@
 
         function unlockStep3() {
             if (currentStep >= 1) {
-                // New custom redirect URL provided by user
                 window.open("https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E/1880", "_blank");
                 
                 if (currentStep === 1) {
@@ -317,6 +378,10 @@
                 
                 let counterSpan = document.getElementById('forward-counter');
                 counterSpan.innerText = "FORWARD PROGRESS: " + forwardCount + " / 5";
+                
+                // Retrigger CSS entry pop on progress value increase
+                counterSpan.classList.remove('counter-active');
+                void counterSpan.offsetWidth;
                 counterSpan.classList.add('counter-active');
                 
                 if (forwardCount === 5) {
