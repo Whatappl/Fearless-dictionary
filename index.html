@@ -3,408 +3,609 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FEARLESS XITS - Get 60% Drag File</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <title>OB54 PROXY APK - XITS PROXY</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Syncopate:wght@700&display=swap');
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: radial-gradient(circle, #4a0000 0%, #150000 70%, #000000 100%);
+            background: #05050a;
             color: #ffffff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Pop-in entry animation for containers */
-        @keyframes popIn {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        /* Interactive Canvas Background Engine */
+        #bgCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
 
-        /* Pulse glow animation for active elements */
-        @keyframes redGlow {
-            0% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
-            50% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); }
-            100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+        /* Shockwave Touch Wave Rings */
+        .shockwave-ring {
+            position: absolute;
+            border: 2px solid #00f0ff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%) scale(0);
+            animation: expandShock 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        }
+        .shockwave-ring.purple {
+            border-color: #7000ff;
+            animation-delay: 0.1s;
+        }
+        @keyframes expandShock {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
+            100% { transform: translate(-50%, -50%) scale(4); opacity: 0; box-shadow: 0 0 40px transparent; }
         }
 
-        /* Shimmer effect for progress bar updates */
-        @keyframes shimmer {
-            0% { background-position: -200px 0; }
-            100% { background-position: 200px 0; }
-        }
-
-        .container {
-            background: rgba(10, 0, 0, 0.95);
-            border: 2px solid #ff0000;
-            border-radius: 4px; 
+        /* Glassmorphic Cyberpunk Card Container */
+        .card {
+            background: rgba(10, 10, 20, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 40px 30px;
             width: 100%;
-            max-width: 480px;
-            padding: 35px 25px;
+            max-width: 450px;
             text-align: center;
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.2);
-            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            animation: cardEntrance 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        @keyframes cardEntrance {
+            from { transform: scale(0.95) translateY(30px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
         }
 
-        .key-box-icon {
-            width: 75px; height: 75px;
-            background: #ff0000;
-            border-radius: 18px;
-            display: inline-flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
-            margin-bottom: 20px;
-            animation: redGlow 3s infinite ease-in-out;
-        }
-        .key-box-icon i { font-size: 35px; color: #000000; transform: rotate(-45deg); }
-        
-        .input-label {
-            font-size: 11px; color: #aa0000; font-weight: bold;
-            letter-spacing: 2px; text-transform: uppercase;
-            margin-bottom: 8px; text-align: left; width: 100%;
-        }
+        .hidden { display: none !important; opacity: 0; }
 
-        .key-input {
-            width: 100%; padding: 16px; background: rgba(30, 0, 0, 0.6);
-            border: 1px solid #550000; color: #ffffff; font-size: 16px;
-            text-align: center; font-weight: bold; letter-spacing: 2px;
-            margin-bottom: 16px; outline: none; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border-radius: 4px;
-        }
-        .key-input:focus { 
-            border-color: #ff0000; 
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
-            background: rgba(45, 0, 0, 0.8);
-        }
-        .key-input:disabled { background: rgba(15, 0, 0, 0.4); color: #444; border-color: #220000; cursor: not-allowed; }
-
-        /* Shake animation for incorrect key entry */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-8px); }
-            40%, 80% { transform: translateX(8px); }
-        }
-        .shake-target { animation: shake 0.4s ease-in-out; }
-
-        .error-msg {
-            background: rgba(255, 0, 0, 0.15); border: 1px dashed #ff0000;
-            color: #ff3333; padding: 12px; font-size: 13px; font-weight: bold;
-            margin-top: 10px; display: none; text-transform: uppercase; letter-spacing: 0.5px;
-            animation: popIn 0.3s ease;
+        /* Premium Interface Headings */
+        h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff 30%, #00f0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .avatar-container { margin-bottom: 22px; }
-        .avatar {
-            width: 90px; height: 90px;
-            background: #ff0000;
-            display: inline-flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 15px #ff0000;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-        .avatar i { font-size: 40px; color: #000000; }
-
-        .sharky-title {
-            font-family: 'Permanent Marker', 'Creepster', cursive;
-            font-size: 38px; color: #ff0000;
-            text-shadow: 3px 3px 0px #000, -1px -1px 0px #fff, 0 0 10px rgba(255, 0, 0, 0.8);
-            letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase;
+        h1 span {
+            font-family: 'Syncopate', sans-serif;
+            background: linear-gradient(90deg, #7000ff, #ff007b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(112, 0, 255, 0.6);
         }
 
-        .title-text {
-            font-size: 15px; color: #ffffff; line-height: 1.6; margin-bottom: 15px;
-            font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
+        .status-node {
+            font-size: 0.75rem;
+            color: #00ffaa;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+        }
+        .status-node span {
+            width: 6px; height: 6px;
+            background: #00ffaa;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #00ffaa;
+            animation: pulseDot 1s infinite alternate;
+        }
+        @keyframes pulseDot { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* Appreciation Ribbon Banner */
+        .milestone-banner {
+            background: linear-gradient(135deg, rgba(112, 0, 255, 0.1), rgba(0, 240, 255, 0.1));
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #d1d1f0;
+        }
+        .milestone-banner strong {
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
 
-        .highlight-red { color: #ff0000; text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
-        .subtitle-text { font-size: 13px; color: #ff6666; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; font-weight: 900; }
-
-        /* Button base styling with Tap/Active state shrink mechanics */
-        .btn {
-            display: flex; align-items: center; justify-content: space-between;
-            width: 100%; padding: 16px 20px; border-radius: 4px; 
-            font-size: 14px; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 1px; text-decoration: none; margin-bottom: 16px;
-            transition: transform 0.1s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            user-select: none; border: none;
+        /* Action/Link Button Customizations */
+        .action-link-btn {
+            display: block;
+            width: 100%;
+            background: #ffffff;
+            color: #000000;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+        .action-link-btn:hover {
+            transform: translateY(-2px);
+            background: #00f0ff;
+            box-shadow: 0 8px 25px rgba(0, 240, 255, 0.4);
         }
 
-        /* Active Unlocked Button States & Micro-interactions */
-        .btn-active { background: #ff0000; color: #000000; border: 1px solid #ffffff; cursor: pointer; }
-        .btn-active:hover { background: #cc0000; color: #ffffff; box-shadow: 0 0 15px #ff0000; transform: translateY(-2px); }
-        .btn-active:active { transform: scale(0.96) translateY(0); } /* Tap compression effect */
-        .btn-active i { color: inherit; }
-
-        /* Locked Button */
-        .btn-locked { background-color: rgba(20, 0, 0, 0.6); color: #555555; border: 1px solid #330000; cursor: not-allowed; }
-
-        .btn-content { display: flex; align-items: center; gap: 15px; text-align: left; }
-        .btn-content i { font-size: 18px; }
-
-        .share-counter {
-            font-size: 11px; color: #ff3333; background: #000000;
-            padding: 2px 8px; margin-top: 4px; display: inline-block;
-            border: 1px solid #440000; font-weight: bold; letter-spacing: 1px;
+        /* Verification Row System */
+        .task-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            padding: 18px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
-
-        .counter-active { color: #ffffff; background: #ff0000; border-color: #ffffff; animation: popIn 0.3s ease; }
-
-        .progress-container { margin: 25px 0; }
-        .progress-text { font-size: 12px; color: #ff6666; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .progress-bar-bg { background-color: #220000; height: 10px; width: 90%; margin: 0 auto; border: 1px solid #440000; border-radius: 5px; overflow: hidden; }
-        .progress-bar-fill { 
-            background: linear-gradient(90deg, #ff0000 0%, #aa0000 50%, #ff0000 100%); 
-            background-size: 200px 100%;
-            height: 100%; width: 0%; 
-            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: shimmer 2s linear infinite;
+        .task-btn.active {
+            border-color: #7000ff;
+            background: rgba(112, 0, 255, 0.05);
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.15);
+        }
+        .task-btn.completed {
+            border-color: #00ffaa;
+            background: rgba(0, 255, 170, 0.05);
+            color: #00ffaa;
+        }
+        .task-btn:disabled, .task-btn.locked {
+            opacity: 0.25;
+            cursor: not-allowed;
+            border-color: transparent;
         }
 
-        #final-btn { justify-content: center; gap: 10px; }
-        .divider { border-top: 1px solid #330000; margin: 30px 0 20px 0; }
-        .section-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
-
-        .support-btn {
-            display: block; width: 100%; padding: 14px; text-decoration: none;
-            font-size: 14px; font-weight: bold; text-align: center; margin-bottom: 12px; 
-            transition: transform 0.1s ease, opacity 0.2s; border-radius: 4px;
+        .counter-badge {
+            background: #7000ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
         }
-        .support-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-        .support-btn:active { transform: scale(0.98); }
-        .btn-official-channel { background-color: rgba(211, 84, 0, 0.15); border: 1px solid #d35400; color: #e67e22; }
-        .btn-direct-support { background-color: rgba(39, 174, 96, 0.15); border: 1px solid #27ae60; color: #2ecc71; }
+        .task-btn.completed .counter-badge { background: #00ffaa; color: #000; }
 
-        .donation-box { background: #000000; border: 1px dashed #ff0000; padding: 15px; margin-top: 20px; text-align: left; }
-        .donation-title { font-size: 12px; font-weight: bold; color: #ff0000; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        .donation-details { font-size: 13px; color: #cccccc; line-height: 1.6; }
-        .donation-details strong { color: #ffffff; }
+        /* Inputs Elements */
+        .label-text {
+            color: #8a8ab0;
+            font-size: 0.8rem;
+            text-align: left;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .input-wrapper { position: relative; margin-bottom: 25px; }
+        input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 16px 16px 16px 46px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        input:focus { border-color: #00f0ff; background: rgba(0, 0, 0, 0.5); }
+        input:disabled { opacity: 0.3; cursor: not-allowed; }
+        .input-wrapper::before {
+            content: '🔑'; position: absolute; left: 16px; top: 50%;
+            transform: translateY(-50%); font-size: 1rem;
+        }
+
+        /* Dual Grid layouts */
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); color: #aaa9c0;
+            padding: 14px; border-radius: 12px; font-size: 0.9rem; font-weight: 600;
+            text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s;
+        }
+        .nav-btn:hover { background: rgba(255, 255, 255, 0.05); color: #ffffff; border-color: rgba(255, 255, 255, 0.2); }
+
+        /* System Master Entry Validation Trigger */
+        .submit-btn {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555566;
+            padding: 18px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 14px;
+            cursor: not-allowed;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .submit-btn.active {
+            background: linear-gradient(90deg, #7000ff, #00f0ff); color: #ffffff; cursor: pointer; border: none;
+            box-shadow: 0 4px 20px rgba(112, 0, 255, 0.3);
+        }
+        .submit-btn.active:hover { transform: translateY(-1px); box-shadow: 0 6px 25px rgba(0, 240, 255, 0.5); }
+
+        /* Dynamic Progress Pipeline Modules */
+        .progress-box { margin: 25px 0; font-size: 0.85rem; color: #8a8ab0; letter-spacing: 0.5px; text-align: left; }
+        .bar-bg { width: 100%; background: rgba(255, 255, 255, 0.05); height: 6px; border-radius: 10px; margin-top: 8px; overflow: hidden; }
+        .bar-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #7000ff, #00f0ff); transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* CSS Mechanical Custom Bike Engine Loader */
+        .bike-loader-wrap {
+            display: none; justify-content: center; align-items: center; margin: 20px 0;
+        }
+        .bicycle { width: 60px; height: 35px; position: relative; animation: bikeRide 0.5s ease-in-out infinite alternate; }
+        @keyframes bikeRide { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
+        .wheel {
+            width: 20px; height: 20px; border: 2px dashed #00f0ff; border-radius: 50%;
+            position: absolute; bottom: 0; animation: rotationalSpin 0.6s linear infinite;
+        }
+        .wheel.left { left: 0; } .wheel.right { right: 0; }
+        .frame-tube { position: absolute; background: #7000ff; height: 2px; transform-origin: left top; }
+        .frame-tube.t1 { width: 26px; top: 16px; left: 10px; transform: rotate(-35deg); }
+        .frame-tube.t2 { width: 26px; top: 16px; left: 10px; transform: rotate(35deg); }
+        .frame-tube.t3 { width: 28px; top: 4px; left: 24px; transform: rotate(76deg); }
+        @keyframes rotationalSpin { 100% { transform: rotate(360deg); } }
+
+        /* Final Yield Configuration Rewards Panels */
+        .rewards-panel { margin-top: 25px; padding-top: 25px; border-top: 1px dashed rgba(255, 255, 255, 0.1); width: 100%; }
+        .final-btn {
+            display: block; width: 100%; padding: 18px; font-size: 1rem; font-weight: 700; text-decoration: none;
+            border-radius: 14px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; text-align: center;
+        }
+        .final-btn.download-max { background: #00ffaa; color: #000; box-shadow: 0 4px 20px rgba(0, 255, 170, 0.3); }
+        .final-btn.download-max:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(0, 255, 170, 0.5); }
+        .final-btn.locked { background: rgba(255,255,255,0.02); color: #4e4e66; border: 1px solid rgba(255, 255, 255, 0.05); pointer-events: none; }
+
+        /* Support elements footer configurations */
+        .footer-list { margin-top: 30px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+        .f-link { color: #555577; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.5px; font-weight: 600; }
+        .f-link:hover { color: #8a8ab0; }
+        .contact-mod { margin-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; }
+        .contact-btn { color: #ff007b; text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .contact-btn:hover { text-shadow: 0 0 15px rgba(255, 0, 123, 0.6); }
     </style>
 </head>
 <body>
 
-    <!-- SCREEN 1: KEY ACCESS GATE (Inspired by 8691.jpg Layout) -->
-    <div class="container" id="key-gate-screen">
-        <div class="key-box-icon"><i class="fas fa-key"></i></div>
-        <h1 class="sharky-title">FEARLESS XITS</h1>
-        <p class="subtitle-text" style="margin-bottom: 15px;">PROXY ACCESS GATEWAY</p>
+    <canvas id="bgCanvas"></canvas>
+
+    <div class="card" id="mainCardFrame">
         
-        <p class="title-text" style="font-size: 13px; color: #bbb; margin-bottom: 20px;">
-            You must follow the official channel to unlock and obtain the proxy access key.
-        </p>
+        <div id="loginSection">
+            <h1>XIT OB54 <br><span>PROXY APK</span></h1>
+            <div class="status-node"><span></span>SECURITY NODE SECURE</div>
 
-        <button class="btn btn-active" onclick="unlockKeyForm()" style="margin-bottom: 25px;">
-            <div class="btn-content"><i class="fab fa-whatsapp"></i><span>1. Follow Channel First</span></div>
-            <i class="fas fa-external-link-alt"></i>
-        </button>
+            <div class="milestone-banner">
+                🎉 <strong>3.8K COMPLETED!</strong> 🎉<br>
+                Thank you all for the incredible support. To celebrate, the premium OB54 structural engine APK is unlocked below!
+            </div>
 
-        <div class="input-label">Enter License Key</div>
-        <input type="text" id="license-key-field" class="key-input" placeholder="PASTE KEY HERE" disabled autocomplete="off">
+            <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" class="action-link-btn" id="loginJoinBtn" target="_blank">
+                📢 CLICK HERE TO JOIN CHANNEL FIRST
+            </a>
 
-        <button id="activate-key-btn" class="btn btn-locked" onclick="verifyLicenseKey()">
-            <div class="btn-content"><i class="fas fa-lock"></i><span>Activate Access</span></div>
-        </button>
+            <div class="label-text">BYPASS ACCESS TOKEN</div>
+            <div class="input-wrapper">
+                <input type="text" id="keyInput" placeholder="Join channel to type key..." disabled autocomplete="off">
+            </div>
 
-        <div id="error-box" class="error-msg"><i class="fas fa-times-circle"></i> Invalid Access Key</div>
-    </div>
+            <div class="grid-layout">
+                <a href="https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045" target="_blank" class="nav-btn">FETCH KEY</a>
+                <a href="https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045" target="_blank" class="nav-btn">BACKUP NODE</a>
+            </div>
 
-    <!-- SCREEN 2: MAIN DASHBOARD STEPS (Rendered post successful key verification) -->
-    <div class="container" id="main-dashboard-screen" style="display: none;">
-        <div class="avatar-container"><div class="avatar"><i class="fas fa-skull-crossbones"></i></div></div>
-        <h1 class="sharky-title">FEARLESS XITS</h1>
+            <button id="submitKeyBtn" class="submit-btn" disabled>ACCESS ENTRY</button>
 
-        <p class="title-text">
-            Follow My WhatsApp Channel & Hit the Bell to Unlock the <span class="highlight-red">60% Drag File</span>. You are here to get the ultimate <span class="highlight-red">aim drag file</span>!
-        </p>
-        <p class="subtitle-text">🔒 LOCK STATE: COMPLETE ALL STEPS 🔒</p>
-
-        <!-- STEP 1: Follow -->
-        <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="btn btn-active" onclick="unlockStep2()">
-            <div class="btn-content"><i class="fab fa-whatsapp"></i><span>Follow & Hit Bell</span></div>
-            <i class="fas fa-bolt"></i>
-        </a>
-
-        <!-- STEP 2: React -->
-        <div id="step2-btn" class="btn btn-locked" onclick="unlockStep3()">
-            <div class="btn-content"><i class="fas fa-fire"></i><span>React & Stay Tuned</span></div>
-            <i id="step2-icon" class="fas fa-lock"></i>
-        </div>
-
-        <!-- STEP 3: Forward 5x -->
-        <div id="step3-btn" class="btn btn-locked" style="height: auto; align-items: flex-start; padding: 12px 20px;" onclick="forwardMessage()">
-            <div class="btn-content">
-                <i class="fas fa-share" style="margin-top: 3px;"></i>
-                <div>
-                    <span>Forward to 5 Groups</span>
-                    <span id="forward-counter" class="share-counter">FORWARD PROGRESS: 0 / 5</span>
+            <div class="bike-loader-wrap" id="portalLoader">
+                <div class="bicycle">
+                    <div class="wheel left"></div>
+                    <div class="frame-tube t1"></div>
+                    <div class="frame-tube t2"></div>
+                    <div class="frame-tube t3"></div>
+                    <div class="wheel right"></div>
                 </div>
             </div>
-            <i id="step3-icon" class="fas fa-lock" style="margin-top: 3px;"></i>
-        </div>
 
-        <!-- Step Progress Tracker -->
-        <div class="progress-container">
-            <div id="progress-text" class="progress-text">STEPS SOLVED: 0 / 3</div>
-            <div class="progress-bar-bg"><div id="progress-fill" class="progress-bar-fill"></div></div>
-        </div>
-
-        <!-- FINAL DOWNLOAD -->
-        <a id="final-btn" href="https://www.mediafire.com/file/ibuq8tsfww1u4zq/OB%2054%20NEW%20UBDATE%2060" target="_blank" class="btn btn-locked" onclick="return checkFinalStatus(event)">
-            <i id="final-icon" class="fas fa-lock"></i>
-            <span id="final-text">LOCKED DRAG FILE</span>
-        </a>
-
-        <div class="divider"></div>
-
-        <h2 class="section-title">Official Links & Support</h2>
-        <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="support-btn btn-official-channel">📢 Join Official Fearless xit Channel</a>
-        <a href="https://wa.me/2349137895828?text=Hello%20Fearless%20Xits,%20I%20need%20support" target="_blank" class="support-btn btn-direct-support">💬 Contact Direct Mod Support</a>
-
-        <div class="donation-box">
-            <div class="donation-title"><i class="fas fa-donate"></i> Support the Modder (Donation)</div>
-            <div class="donation-details">
-                Acc Num: <strong>5081472554</strong><br>
-                Acc Name: <strong>Oluwakemi</strong><br>
-                Bank: <strong>Moniepoint MFB</strong>
+            <div class="footer-list">
+                <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="f-link">■ OFFICIAL CHANNEL 1.0</a>
+                <a href="https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045" target="_blank" class="f-link">■ BACKUP CHANNEL 2.0</a>
             </div>
         </div>
+
+        <div id="verificationSection" class="hidden">
+            <div style="font-size:2.5rem; margin-bottom:8px; display:inline-block; animation: bikeRide 1s ease-in-out infinite alternate;">🍃</div>
+            <h1>Step Verification</h1>
+            <p style="font-size: 0.9rem; color: #8a8ab0; margin-bottom: 25px; font-weight: 500;">Resolve active secure nodes in succession to unlock core files.</p>
+            
+            <div id="lockStatus" style="color:#ff007b; font-size:0.8rem; font-weight:700; margin-bottom:25px; letter-spacing:1px; text-transform:uppercase;">
+                🔒 LOCK STATE: COMPLETE ALL STEPS
+            </div>
+
+            <button class="task-btn active" id="vFollowBtn">
+                <span>📢 1. Follow & Hit Bell</span>
+                <span id="fIcon" style="font-size:1rem;">⚡</span>
+            </button>
+
+            <button class="task-btn locked" id="vReactBtn" disabled>
+                <span>🔥 2. React & Stay Tuned</span>
+                <span id="rIcon" style="font-size:1rem;">🔒</span>
+            </button>
+
+            <button class="task-btn locked" id="vShareBtn" disabled>
+                <span>🔗 3. Forward to 5 Groups</span>
+                <span class="counter-badge" id="shareCounter">0 / 5</span>
+            </button>
+
+            <div class="progress-box">
+                Tasks Fully Resolved: <span id="stepsCounterTxt" style="color:#fff; font-weight:700;">0</span> / 3
+                <div class="bar-bg"><div class="bar-fill" id="progressBar"></div></div>
+            </div>
+
+            <div class="rewards-panel">
+                <div id="downloadGridContainer">
+                    <a href="#" class="final-btn locked" id="fFilePlaceholder">🔒 Locked Proxy Apk</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-mod">
+            <a href="https://wa.me/2349137895828?text=Hello%20Fearless,%20I%20need%20help%20with%20the%20OB54%20Proxy!" target="_blank" class="contact-btn">
+                🛠️ CONTACT MAIN MODERATOR
+            </a>
+        </div>
+
     </div>
 
-    <!-- JavaScript Interaction Logic -->
     <script>
-        let currentStep = 0;
-        let forwardCount = 0;
-        let channelFollowed = false;
+        // Data Distribution Config Matrix
+        const PASSKEY_TOKEN = "FEARLESS-PROXY"; // Changed key variant token asset here
+        const AD_CHANNEL_1  = "https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E";
+        const AD_REACT_POST = "https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045/100";
+        const OB54_PROXY_APK    = "https://www.mediafire.com/file/8rht9zqu40k7t03/OB54_PROXY_BY_FEARLESSXITS.apk/file";
 
-        const forwardText = encodeURIComponent("60% DRAG FILE LEAKED ⚙️(working for android devices)\nSafe for main id & anti black list ✅️\n\nDRAG FILE LINK : https://fearlessdragfile.netlify.app/\n\nFOLLOW FEARLESS OFC CHANNEL FOR MORE FILES LEAK: https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E");
+        const WA_FORWARD_MSG = encodeURIComponent(
+`*PROXY SERVER APK FF MAX 🍃👇*
 
-        // Key Logic & UI Transitions
-        function unlockKeyForm() {
-            window.open("https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E", "_blank");
-            
-            channelFollowed = true;
-            document.getElementById('license-key-field').disabled = false;
-            
-            let actBtn = document.getElementById('activate-key-btn');
-            actBtn.classList.remove('btn-locked');
-            actBtn.classList.add('btn-active');
-            actBtn.querySelector('i').className = 'fas fa-unlock-alt';
-            
-            // Pop focus effect onto the input field
-            setTimeout(() => {
-                document.getElementById('license-key-field').focus();
-            }, 300);
+*🔗Generator Link :* https://fearlessxproxy.netlify.app
+*🔗Update Channel :* https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E
+
+💬 Share with 5 groups or with your friends so you don't get errors when entering ☑️`
+        );
+
+        // --- INTERACTIVE BACKGROUND ENGINE ---
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+        let mousePosition = { x: null, y: null };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('mousemove', (e) => { mousePosition.x = e.clientX; mousePosition.y = e.clientY; });
+        window.addEventListener('touchmove', (e) => { mousePosition.x = e.touches[0].clientX; mousePosition.y = e.touches[0].clientY; });
+        window.addEventListener('touchend', () => { mousePosition.x = null; mousePosition.y = null; });
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.3 - 0.15;
+                this.speedY = Math.random() * 0.3 - 0.15;
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height;
+                
+                if (mousePosition.x !== null) {
+                    let dx = mousePosition.x - this.x; let dy = mousePosition.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) { this.x += dx * 0.01; this.y += dy * 0.01; }
+                }
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(112, 0, 255, 0.2)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < 50; i++) { particlesArray.push(new Particle()); }
+        }
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update(); particlesArray[i].draw();
+                for (let j = i; j < particlesArray.length; j++) {
+                    let dx = particlesArray[i].x - particlesArray[j].x;
+                    let dy = particlesArray[i].y - particlesArray[j].y;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${0.1 - (distance/100)*0.1})`;
+                        ctx.lineWidth = 0.5; ctx.beginPath();
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y); ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        initParticles(); animateParticles();
+
+        // --- GLOBAL MECHANICAL HAPTIC INTERACTION ENGINE ---
+        document.addEventListener('click', function(e) {
+            createHapticShockwave(e.clientX, e.clientY, 'purple');
+            createHapticShockwave(e.clientX, e.clientY, 'cyan');
+        });
+        function createHapticShockwave(x, y, variant) {
+            let ring = document.createElement('div');
+            ring.classList.add('shockwave-ring');
+            if(variant === 'purple') ring.classList.add('purple');
+            document.body.appendChild(ring);
+            ring.style.left = `${x}px`; ring.style.top = `${y}px`;
+            setTimeout(() => { ring.remove(); }, 600);
         }
 
-        function verifyLicenseKey() {
-            if (!channelFollowed) return;
-            
-            const inputField = document.getElementById('license-key-field');
-            const userKey = inputField.value.trim();
-            const errorBox = document.getElementById('error-box');
-            const screenBox = document.getElementById('key-gate-screen');
-            
-            if (userKey === "FEARLESS-5421") {
-                errorBox.style.display = "none";
-                
-                // Pop out old screen before switching dashboards smoothly
-                screenBox.style.transform = "scale(0.9)";
-                screenBox.style.opacity = "0";
-                screenBox.style.transition = "all 0.2s ease";
-                
-                setTimeout(() => {
-                    screenBox.style.display = "none";
-                    const dash = document.getElementById('main-dashboard-screen');
-                    dash.style.display = "block";
-                }, 200);
+        // --- ACCESS VERIFICATION PLATFORM CONTROL ENGINE ---
+        const loginJoinBtn = document.getElementById('loginJoinBtn');
+        const keyInput = document.getElementById('keyInput');
+        const submitKeyBtn = document.getElementById('submitKeyBtn');
+        const loginSection = document.getElementById('loginSection');
+        const verificationSection = document.getElementById('verificationSection');
+        const portalLoader = document.getElementById('portalLoader');
+        const mainCardFrame = document.getElementById('mainCardFrame');
+
+        loginJoinBtn.addEventListener('click', () => {
+            keyInput.removeAttribute('disabled');
+            keyInput.placeholder = "Enter access token key...";
+            keyInput.focus();
+        });
+
+        keyInput.addEventListener('input', () => {
+            if (keyInput.value.trim().length > 0) {
+                submitKeyBtn.removeAttribute('disabled');
+                submitKeyBtn.classList.add('active');
             } else {
-                // Trigger shake error animation
-                errorBox.style.display = "block";
-                inputField.classList.remove('shake-target');
-                void inputField.offsetWidth; // Force hardware redraw reflow
-                inputField.classList.add('shake-target');
+                submitKeyBtn.setAttribute('disabled', 'true');
+                submitKeyBtn.classList.remove('active');
             }
-        }
+        });
 
-        // Main Progression Operations
-        function updateProgress() {
-            document.getElementById('progress-text').innerText = "STEPS SOLVED: " + currentStep + " / 3";
-            document.getElementById('progress-fill').style.width = (currentStep * 33.33) + "%";
-        }
+        submitKeyBtn.addEventListener('click', () => {
+            if (keyInput.value.trim() === PASSKEY_TOKEN) {
+                submitKeyBtn.style.display = "none";
+                portalLoader.style.display = "flex";
 
-        function unlockStep2() {
-            if (currentStep === 0) {
-                currentStep = 1;
-                updateProgress();
-                
-                let step2 = document.getElementById('step2-btn');
-                step2.classList.remove('btn-locked');
-                step2.classList.add('btn-active');
-                document.getElementById('step2-icon').className = 'fas fa-bolt';
+                setTimeout(() => {
+                    mainCardFrame.style.transform = "scale(0.97)";
+                    mainCardFrame.style.opacity = "0";
+                    setTimeout(() => {
+                        loginSection.classList.add('hidden');
+                        verificationSection.classList.remove('hidden');
+                        mainCardFrame.style.transform = "scale(1)";
+                        mainCardFrame.style.opacity = "1";
+                    }, 300);
+                }, 1200);
+            } else {
+                alert("❌ INVALID ACCESS TOKEN! Fetch the exact key from our channel.");
+                keyInput.value = "";
+                submitKeyBtn.setAttribute('disabled', 'true');
+                submitKeyBtn.classList.remove('active');
             }
-        }
+        });
 
-        function unlockStep3() {
-            if (currentStep >= 1) {
-                window.open("https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E/1880", "_blank");
+        // --- WORKFLOW ROUTING CONTROLLER ---
+        let step1Completed = false;
+        let step2Completed = false;
+        let activeSharesTracker = 0;
+
+        const vFollowBtn = document.getElementById('vFollowBtn');
+        const vReactBtn  = document.getElementById('vReactBtn');
+        const vShareBtn  = document.getElementById('vShareBtn');
+        const shareCounter    = document.getElementById('shareCounter');
+        const stepsCounterTxt  = document.getElementById('stepsCounterTxt');
+        const progressBar     = document.getElementById('progressBar');
+        const lockStatus      = document.getElementById('lockStatus');
+        const downloadGridContainer = document.getElementById('downloadGridContainer');
+
+        vFollowBtn.addEventListener('click', () => {
+            window.open(AD_CHANNEL_1, '_blank');
+            if (!step1Completed) {
+                step1Completed = true;
+                vFollowBtn.className = "task-btn completed";
+                document.getElementById('fIcon').innerText = "✓";
                 
-                if (currentStep === 1) {
-                    currentStep = 2;
-                    updateProgress();
-                    
-                    let step3 = document.getElementById('step3-btn');
-                    step3.classList.remove('btn-locked');
-                    step3.classList.add('btn-active');
-                    document.getElementById('step3-icon').className = 'fas fa-share-all';
+                vReactBtn.removeAttribute('disabled');
+                vReactBtn.className = "task-btn active";
+                document.getElementById('rIcon').innerText = "⚡";
+                evaluateWorkflowSystem();
+            }
+        });
+
+        vReactBtn.addEventListener('click', () => {
+            window.open(AD_REACT_POST, '_blank');
+            if (!step2Completed) {
+                step2Completed = true;
+                vReactBtn.className = "task-btn completed";
+                document.getElementById('rIcon').innerText = "✓";
+                
+                vShareBtn.removeAttribute('disabled');
+                vShareBtn.className = "task-btn active";
+                evaluateWorkflowSystem();
+            }
+        });
+
+        vShareBtn.addEventListener('click', () => {
+            window.open(`https://api.whatsapp.com/send?text=${WA_FORWARD_MSG}`, '_blank');
+            if (activeSharesTracker < 5) {
+                activeSharesTracker++;
+                shareCounter.innerText = `${activeSharesTracker} / 5`;
+                if (activeSharesTracker === 5) {
+                    vShareBtn.className = "task-btn completed";
                 }
+                evaluateWorkflowSystem();
             }
-        }
+        });
 
-        function forwardMessage() {
-            if (currentStep >= 2 && forwardCount < 5) {
-                window.open("whatsapp://send?text=" + forwardText, "_blank");
-                
-                forwardCount++;
-                
-                let counterSpan = document.getElementById('forward-counter');
-                counterSpan.innerText = "FORWARD PROGRESS: " + forwardCount + " / 5";
-                
-                // Retrigger CSS entry pop on progress value increase
-                counterSpan.classList.remove('counter-active');
-                void counterSpan.offsetWidth;
-                counterSpan.classList.add('counter-active');
-                
-                if (forwardCount === 5) {
-                    currentStep = 3;
-                    updateProgress();
-                    
-                    let finalBtn = document.getElementById('final-btn');
-                    finalBtn.classList.remove('btn-locked');
-                    finalBtn.classList.add('btn-active');
-                    
-                    document.getElementById('final-icon').className = 'fas fa-terminal';
-                    document.getElementById('final-text').innerText = 'GET AIM DRAG FILE';
-                }
-            }
-        }
+        function evaluateWorkflowSystem() {
+            let scoreTracker = 0;
+            if (step1Completed) scoreTracker++;
+            if (step2Completed) scoreTracker++;
+            if (activeSharesTracker === 5) scoreTracker++;
 
-        function checkFinalStatus(event) {
-            if (currentStep < 3) {
-                event.preventDefault();
-                alert("ACCESS DENIED: Complete all 3 steps to unlock the Drag File.");
-                return false;
+            stepsCounterTxt.innerText = scoreTracker;
+            progressBar.style.width = `${(scoreTracker / 3) * 100}%`;
+
+            if (scoreTracker === 3) {
+                lockStatus.innerText = "🔓 NODES RESOLVED! DOWNLOAD READY";
+                lockStatus.style.color = "#00ffaa";
+                downloadGridContainer.innerHTML = `<a href="${OB54_PROXY_APK}" target="_blank" class="final-btn download-max">📥 DOWNLOAD OB54 PROXY APK</a>`;
             }
-            return true;
         }
     </script>
 </body>
